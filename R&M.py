@@ -107,7 +107,6 @@ cursor1.execute("SELECT Dimension, COUNT(Dimension) FROM rm_locations GROUP BY D
 dims_list = []
 
 for record in cursor1.fetchall():
-    # print(f'Dimension Name: {record[0]}; Number Of Locations: {record[1]} ')
     dims_list.append((record[0], record[1]))
 
 cursor2.executemany("INSERT INTO rm_locations (Name, Number_of_locations) values (?,?)", dims_list)
