@@ -38,6 +38,7 @@ for each_dead_morty in res['results']:
           f" \"Acted\" in {len(each_dead_morty['episode'])} episodes")
 
 # IV
+# იქმნება 3 ცხრილი, პირველში ყველა პერსონაჟია გაერთიანებული სახელის, სქესისა და საცხოვრებელი ლოკაციის მიხედვით
 
 conn = sqlite3.connect('rm_characters.sqlite')
 cursor = conn.cursor()
@@ -64,6 +65,8 @@ while char_index <= chars_count:
 
 cursor.executemany("INSERT INTO rm (Name, Gender, Location) values (?, ?, ?)", characters_list)
 conn.commit()
+
+# მეორე ცხრილში გაერთიანებულია ლოკაციები სახელის, განზომილებისა და პოპულაციის მიხედვით
 
 conn1 = sqlite3.connect('rm_locations.sqlite')
 cursor1 = conn1.cursor()
@@ -93,6 +96,8 @@ while loc_index <= locs_count:
 
 cursor1.executemany("INSERT INTO rm_locations (Name, Dimension, Population) values (?, ?, ?)", locations_list)
 conn1.commit()
+
+# მესამე ცხრილში გაერთიანებულია განზომილებები სახელისა და მათში გაერთანებული ლოკაციების რაოდენობის მიხედვით
 
 conn2 = sqlite3.connect('rm_dimensions.sqlite')
 cursor2 = conn2.cursor()
